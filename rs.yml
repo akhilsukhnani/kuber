@@ -5,17 +5,16 @@ metadata:
 spec: 
   replicas: 3
   selector:
-    matchExpressions:
-      - { key: env, operator: In, values: [production] }
-      - { key: region, operator: In, values: [in] }
+     matchLabels:
+       env: production
+#    matchExpressions: (this syntax is not working here)
+#      - {key: env, operator: In, values: [production]}
 
   template:
     metadata:
       name: myweb-pod   
       labels:
-       env: production
-       dc: "2"
-       region: "in"
+        env: production
     spec:
       containers:
       - name: myweb-pod
